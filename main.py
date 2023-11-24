@@ -29,9 +29,9 @@ charwidths = open(charwidths_path, 'w')
 def create_costume(svg_char_path, costume_path, units_per_em, step):
 	costume = svgwrite.Drawing(costume_path, profile='tiny', size=('480px', '360px'))
 	costume.viewbox(0, 0, 480, 360)
-	transform_size = costume_height / units_per_em
-	costume.add(costume.rect(insert=(240 - 0.25 * costume_height - 2, 180 - 0.75 * costume_height - 2),
-							size=(costume_height + 4, costume_height + 4),
+	transform_size = char_height / units_per_em
+	costume.add(costume.rect(insert=(240 - 0.25 * char_height - 2, 180 - 0.75 * char_height - 2),
+							size=(char_height + 4, char_height + 4),
 							fill='green',
 							opacity='0'))
 	costume.add(costume.path(d=svg_char_path,
@@ -67,4 +67,4 @@ for char_type in chars:
 				costume_path = get_costume_path(char_type, char_number, font_number, step)
 				svg_char_path = get_svg_char_path(glyph)
 				create_costume(svg_char_path, costume_path, units_per_em, step)
-				charwidths.write(f'{glyph.width / units_per_em * costume_height}\n')
+				charwidths.write(f'{glyph.width / units_per_em * char_height}\n')

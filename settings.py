@@ -24,7 +24,7 @@ chars = {
 }
 
 # Ascender height in pixels
-costume_height = 8
+char_height = 8
 
 # Number of subpixel steps (at least 1)
 steps = 2
