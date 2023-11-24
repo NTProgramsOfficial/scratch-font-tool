@@ -3,7 +3,7 @@
 ## Instructions
 - Make changes in `settings.py` to select your fonts, characters and other settings.
 - Install [Python](https://www.python.org/downloads/) and [pip](https://pip.pypa.io/en/stable/installation/) if you haven't already
-- Run the following:
+- Run the following in your command line:
 
 ```
 pip install svgwrite fonttools
