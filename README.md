@@ -5,8 +5,8 @@ Effortlessly generate font costumes and character widths for your Scratch text e
 ## Instructions
 
 - [Download](https://github.com/NTProgramsOfficial/scratch-font-tool/archive/refs/heads/main.zip) the files from this repository
-- Make changes in `settings.py` to select your fonts, characters and other settings.
-- Install [Python](https://www.python.org/downloads/) and [pip](https://pip.pypa.io/en/stable/installation/) if you haven't already.
+- Make changes in `settings.py` to select your fonts, characters and other settings
+- Install [Python](https://www.python.org/downloads/) and [pip](https://pip.pypa.io/en/stable/installation/) if you haven't already
 - Install the dependencies:
 
 ```
