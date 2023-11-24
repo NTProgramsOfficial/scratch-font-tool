@@ -67,4 +67,4 @@ for char_type in chars:
 				costume_path = get_costume_path(char_type, char_number, font_number, step)
 				svg_char_path = get_svg_char_path(glyph)
 				create_costume(svg_char_path, costume_path, units_per_em, step)
-				charwidths.write(f'{glyph.width / units_per_em * char_height}\n')
+			charwidths.write(f'{glyph.width / units_per_em * char_height}\n')
