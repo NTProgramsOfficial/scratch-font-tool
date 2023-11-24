@@ -5,10 +5,16 @@
 - Install [Python](https://www.python.org/downloads/) and [pip](https://pip.pypa.io/en/stable/installation/) if you haven't already
 - Run the following:
 
-```pip install svgwrite fonttools```
+```
+pip install svgwrite fonttools
+```
 
-```python main.py```
+```
+python main.py
+```
 
 If the command above doesn't work, run the following instead:
 
-```python3 main.py```
+```
+python3 main.py
+```
