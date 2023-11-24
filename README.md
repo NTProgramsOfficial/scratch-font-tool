@@ -1,5 +1,7 @@
 # scratch-font-tool
 
+Effortlessly generate font costumes and character widths for your Scratch text engine!
+
 ## Instructions
 
 - [Download](https://github.com/NTProgramsOfficial/scratch-font-tool/archive/refs/heads/main.zip) the files from this repository
