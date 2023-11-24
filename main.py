@@ -52,7 +52,7 @@ def get_svg_char_path(glyph):
 
 def get_costume_path(char_type, char_number, font_number, step):
 	char_alias = char_aliases[char_type][char_number]
-	return os.path.join(costumes_path, char_type, f'{font_number}_{char_alias}{step if steps > 1 else ""}.svg')
+	return os.path.join(costumes_path, char_type, f'{f"{font_number}_" if len(font_paths) > 1 else ""}{char_alias}{step if steps > 1 else ""}.svg')
 
 
 for char_type in chars:

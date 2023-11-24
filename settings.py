@@ -5,7 +5,7 @@
 # Font files (could be in a different directory)
 # MUST CHANGE IF YOU DON'T WANT THESE FONTS
 font_paths = [
-	"Inter-Light.ttf",
+    "Inter-Light.ttf",
 	"Inter-Regular.ttf",
 	"Inter-SemiBold.ttf",
 ]
