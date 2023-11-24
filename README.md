@@ -3,18 +3,17 @@
 ## Instructions
 - Make changes in `settings.py` to select your fonts, characters and other settings.
 - Install [Python](https://www.python.org/downloads/) and [pip](https://pip.pypa.io/en/stable/installation/) if you haven't already
-- Run the following in your command line:
+- Install the dependencies:
 
 ```
 pip install svgwrite fonttools
 ```
-
+- Run using:
 ```
 python main.py
 ```
 
-If the command above doesn't work, run the following instead:
-
+- or:
 ```
 python3 main.py
 ```
