@@ -3,3 +3,4 @@ __pycache__/
 costumes/
 *.ttf
 *.txt
+.DS_Store
