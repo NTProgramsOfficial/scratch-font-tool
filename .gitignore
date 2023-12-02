@@ -1,6 +1,7 @@
 __pycache__/
 .vscode/
 costumes/
+chars/
 *.ttf
 *.txt
 .DS_Store

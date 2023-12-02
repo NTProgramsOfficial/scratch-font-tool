@@ -4,12 +4,15 @@
 
 import os
 import shutil
-import svgwrite
+from unittest.mock import Base
+from svgpathtools import parse_path, wsvg
 from fontTools.pens.svgPathPen import SVGPathPen
 from fontTools.ttLib import TTFont
 from settings import *
 from settings_helper import *
 from prompt import confirm
+
+template = open('template.svg', 'r').read().replace('[[]]', f'{char_height * 2}')
 
 if os.path.exists(costumes_path):
 	if not confirm(f"'{costumes_path}/' exists. Overwrite? "):
@@ -27,25 +30,37 @@ os.mkdir(costumes_path)
 charwidths = open(charwidths_path, 'w')
 
 def create_costume(svg_char_path, costume_path, units_per_em, step):
-	costume = svgwrite.Drawing(costume_path, profile='tiny', size=('480px', '360px'))
-	costume.viewbox(0, 0, 480, 360)
+	# costume = svgwrite.Drawing(costume_path, profile='tiny', size=(char_height + 4, char_height + 4))
+	# costume.viewbox(0, 0, char_height + 4, char_height + 4)
 	transform_size = char_height / units_per_em
-	costume.add(costume.rect(insert=(240 - 0.25 * char_height - 2, 180 - 0.75 * char_height - 2),
-							size=(char_height + 4, char_height + 4),
-							fill='green',
-							opacity='0'))
-	costume.add(costume.path(d=svg_char_path,
-							fill='red',
-							transform=f"translate({240 + step / steps}, 180) scale({transform_size}, {-transform_size})"))
-	costume.save()
+	# costume.add(costume.rect(insert=(-0.25 * char_height - 2, -0.75 * char_height - 2),
+	# 						size=(char_height + 4, char_height + 4),
+	# 						fill='green',
+	# 						opacity='0'))
+	# if svg_char_path != '':
+	# 	costume.add(costume.path(d=svg_char_path,
+	# 							 fill='red',
+	# 							 transform=f"translate({(step + 1) / steps - 0.5}, 0) scale({transform_size}, {-transform_size})"))
+	# costume.save()
+	with open(costume_path, 'w') as file:
+		path = parse_path(svg_char_path).scaled(transform_size, -transform_size, 240 + char_height / 2 + (step + 1) / steps - 0.5 + (180 + char_height) * 1j)
+		file.write(template.replace('{{}}', path.d()))
+		file.close()
 
 
 def get_glyph(char, glyph_set):
-    return glyph_set[f"uni{f'{ord(char):#0{6}x}'[2:].upper()}"]
+	# code = f"uni{f'{ord(char):#0{6}x}'[2:].upper()}"
+	key = glyph_set.font['cmap'].getBestCmap()[ord(char)]
+	return glyph_set[key]
+	# if code in glyph_set:
+	# 	return glyph_set[code]
+	# if char in glyph_set:
+	# 	return glyph_set[char]
+	
 
 
 def get_svg_char_path(glyph):
-	pen = SVGPathPen(None)
+	pen = SVGPathPen(glyph.glyphSet)
 	glyph.draw(pen)
 	return pen.getCommands()
 
