@@ -30,18 +30,7 @@ os.mkdir(costumes_path)
 charwidths = open(charwidths_path, 'w')
 
 def create_costume(svg_char_path, costume_path, units_per_em, step):
-	# costume = svgwrite.Drawing(costume_path, profile='tiny', size=(char_height + 4, char_height + 4))
-	# costume.viewbox(0, 0, char_height + 4, char_height + 4)
 	transform_size = char_height / units_per_em
-	# costume.add(costume.rect(insert=(-0.25 * char_height - 2, -0.75 * char_height - 2),
-	# 						size=(char_height + 4, char_height + 4),
-	# 						fill='green',
-	# 						opacity='0'))
-	# if svg_char_path != '':
-	# 	costume.add(costume.path(d=svg_char_path,
-	# 							 fill='red',
-	# 							 transform=f"translate({(step + 1) / steps - 0.5}, 0) scale({transform_size}, {-transform_size})"))
-	# costume.save()
 	with open(costume_path, 'w') as file:
 		path = parse_path(svg_char_path).scaled(transform_size, -transform_size, 240 + char_height / 2 + (step + 1) / steps - 0.5 + (180 + char_height) * 1j)
 		file.write(template.replace('{{}}', path.d()))
@@ -49,14 +38,8 @@ def create_costume(svg_char_path, costume_path, units_per_em, step):
 
 
 def get_glyph(char, glyph_set):
-	# code = f"uni{f'{ord(char):#0{6}x}'[2:].upper()}"
 	key = glyph_set.font['cmap'].getBestCmap()[ord(char)]
 	return glyph_set[key]
-	# if code in glyph_set:
-	# 	return glyph_set[code]
-	# if char in glyph_set:
-	# 	return glyph_set[char]
-	
 
 
 def get_svg_char_path(glyph):
